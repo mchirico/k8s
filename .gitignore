@@ -19,3 +19,9 @@ credentials/
 secrets/
 .DS_Store
 **/nohup.out
+
+
+*.key
+*.crt
+*.csr
+
