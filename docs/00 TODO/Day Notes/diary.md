@@ -69,7 +69,7 @@ cat mike.csr |base64
 cat mike.csr |base64 -w 0
 ```
 
-
+Need to paste base64 key in here
 
 ```bash
 cat <<EOF | kubectl apply -f -
@@ -188,14 +188,13 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: ns-reader
-  namespace: myapp
 subjects:
 - kind: User
   name: mike
-  namespace: myapp
 roleRef:
   kind: ClusterRole
   name: ns-reader
+  apiGroup: rbac.authorization.k8s.io
 ```  
 
 
