@@ -12,11 +12,9 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: ns-reader
-  namespace: myapp
 subjects:
 - kind: User
   name: mike
-  namespace: myapp
 roleRef:
   kind: ClusterRole
   name: ns-reader
