@@ -19,6 +19,24 @@ docker-machine ssh ${KUBE_BUILD_VM} -L ${PORT}:localhost:${PORT} -N &
 ```
 
 
+Metal
+
+```bash
+# Metal
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml
+# On first install only
+kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
+
+
+kubectl apply -f configs/metal_opa.yaml 
+
+
+```
+
+
+
+
 ## Now installing OPA
 
 ```bash

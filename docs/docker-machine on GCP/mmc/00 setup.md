@@ -8,9 +8,10 @@ https://github.com/kubernetes/kubernetes/blob/8725c3bf12cfd3697464136201216fa05d
 
 # Start Steps (Already Created)
 ```bash
-export GOOGLE_APPLICATION_CREDENTIALS=/Users/rommel/.googleAuthPath/k8s-dev-cwxstat.json
-export KUBE_BUILD_VM=k8s-build
-export KUBE_BUILD_GCE_PROJECT=k8s-dev-cwxstat
+# export GOOGLE_APPLICATION_CREDENTIALS=/Users/rommel/.googleAuthPath/k8s-dev-cwxstat.json
+export GOOGLE_APPLICATION_CREDENTIALS=/Users/rommel/.googleAuthPath/mchirico-k8s.json
+export KUBE_BUILD_VM=mchirico-build
+export KUBE_BUILD_GCE_PROJECT=mchirico
 # Start computer
 docker-machine start ${KUBE_BUILD_VM}
 
@@ -27,18 +28,21 @@ docker-machine ssh ${KUBE_BUILD_VM} -L ${PORT}:localhost:${PORT} -N &
 Note... `rm -rf ~/.docker/machine/machines/k8s-build`  is needed.
 
 ```bash
+export GOOGLE_APPLICATION_CREDENTIALS=/Users/rommel/.googleAuthPath/mchirico-k8s.json
+export KUBE_BUILD_VM=mchirico-k8s
+export KUBE_BUILD_GCE_PROJECT=mchirico
 
-export GOOGLE_APPLICATION_CREDENTIALS=/Users/rommel/.googleAuthPath/k8s-dev-cwxstat.json
-export KUBE_BUILD_VM=k8s-build
-export KUBE_BUILD_GCE_PROJECT=k8s-dev-cwxstat
+# Note below nonstandard subnet: default2
 
 docker-machine create --driver google \
   --google-project ${KUBE_BUILD_GCE_PROJECT} \
   --google-zone us-central1-f \
   --google-machine-type=n1-standard-4 \
+  --google-network=default2 \
+  --google-subnetwork=default2 \
   --google-disk-size=100 \
   --google-preemptible=false \
-  --google-address=35.193.101.35  \
+  --google-address=35.202.88.179  \
   --google-disk-type=pd-ssd \
   ${KUBE_BUILD_VM}
 
@@ -98,9 +102,9 @@ docker-machine ssh ${KUBE_BUILD_VM} -L ${PORT}:localhost:${PORT} -N &
 ## Stop
 
 ```bash
-export GOOGLE_APPLICATION_CREDENTIALS=/Users/rommel/.googleAuthPath/k8s-dev-cwxstat.json
-export KUBE_BUILD_VM=k8s-build
-export KUBE_BUILD_GCE_PROJECT=k8s-dev-cwxstat
+export GOOGLE_APPLICATION_CREDENTIALS=/Users/rommel/.googleAuthPath/mchirico-k8s.json
+export KUBE_BUILD_VM=mchirico-k8s
+export KUBE_BUILD_GCE_PROJECT=mchirico
 
 docker-machine stop ${KUBE_BUILD_VM}
 
