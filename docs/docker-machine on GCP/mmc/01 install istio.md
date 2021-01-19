@@ -56,7 +56,7 @@ curl -s "http://${GATEWAY_URL}/productpage" | grep -o "<title>.*</title>"
 
 curl -s "http://localhost:3050/productpage" | grep -o "<title>.*</title>"
 
-curl http://dev.cwxstat.io:3001/productpage
+curl https://dev.cwxstat.io:3000/productpage
 ```
 
 # watch
@@ -77,4 +77,6 @@ istioctl install --set values.global.logging.level=debug
 istioctl dashboard kiali
 
 istioctl dashboard grafana
+
+istioctl dashboard jaeger
 ```
