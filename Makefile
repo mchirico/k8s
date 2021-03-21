@@ -22,11 +22,15 @@ k8sSource : v1.20 create
 
 .PHONY: v1.20
 v1.20:
-	go get k8s.io/kubernetes || true
-	cd $GOPATH/src/k8s.io/kubernetes && git checkout v1.20.1 || git pull
+
+	# New way
+	git clone https://github.com/kubernetes/kubernetes.git
+	# cd $GOPATH/src/k8s.io/kubernetes && git checkout v1.20.1 || git pull
 	go get sigs.k8s.io/kind
 #     Node image
-	kind build node-image --image=v1.20
+
+	kind build node-image --image=v1.20.5 --kube-root=kubernetes
+
 
 
 .PHONY: create
