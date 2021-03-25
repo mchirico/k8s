@@ -36,4 +36,4 @@ v1.20:
 .PHONY: create
 create:
 	kind delete --name 1.20.5  cluster
-	kind create cluster --image=v1.20.5 --config configs/kind_basic.yaml
+	kind create cluster --name 1.20.5 --image=v1.20.5 --config configs/kind_basic.yaml
