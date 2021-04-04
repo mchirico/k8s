@@ -28,7 +28,7 @@ v1.20:
 	# cd $GOPATH/src/k8s.io/kubernetes && git checkout v1.20.1 || git pull
 	go get sigs.k8s.io/kind
 #     Node image
-
+# Needs to be full path? kind build node-image --image=v1.20.5 --kube-root=/home/mchirico/work/kubernetes
 	kind build node-image --image=v1.20.5 --kube-root=kubernetes
 
 
